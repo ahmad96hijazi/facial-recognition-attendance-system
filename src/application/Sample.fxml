@@ -1,0 +1,237 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.geometry.Point3D?>
+<?import javafx.geometry.Rectangle2D?>
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.ListView?>
+<?import javafx.scene.control.ProgressIndicator?>
+<?import javafx.scene.control.ScrollPane?>
+<?import javafx.scene.control.Separator?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.TitledPane?>
+<?import javafx.scene.effect.Glow?>
+<?import javafx.scene.effect.InnerShadow?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.BorderPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.TilePane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+
+<BorderPane xmlns="http://javafx.com/javafx/9.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.SampleController">
+    <center>
+        <TitledPane alignment="CENTER" collapsible="false" ellipsisString="" maxWidth="800.0" text="LIU Attendance System" textAlignment="CENTER" textOverrun="LEADING_WORD_ELLIPSIS" wrapText="true" BorderPane.alignment="TOP_LEFT">
+            <font>
+                <Font name="Poiret One" size="23.0" />
+            </font>
+            <effect>
+                <InnerShadow />
+            </effect>
+         <BorderPane.margin>
+            <Insets />
+         </BorderPane.margin>
+         <content>
+            <SplitPane dividerPositions="0.29797979797979796">
+              <items>
+                <AnchorPane>
+                     <children>
+                              <ImageView fx:id="frame" fitHeight="499.0" fitWidth="696.0" pickOnBounds="true" smooth="false">
+                                  <viewport>
+                                      <Rectangle2D />
+                                  </viewport>
+                           <image>
+                              <Image url="@asset/logo.png" />
+                           </image>
+                              </ImageView>
+                              <ProgressIndicator fx:id="pb" layoutX="330.0" layoutY="210.0" progress="0.0" visible="false" />
+                              <Label fx:id="savedLabel" layoutX="290.0" layoutY="370.0" text=" Face Saved" visible="false">
+                                  <font>
+                                      <Font name="Vonique 92" size="25.0" />
+                                  </font>
+                              </Label>
+                              <Label fx:id="warning" alignment="CENTER" contentDisplay="CENTER" layoutX="290.0" layoutY="370.0" text="Missing Data" textFill="WHITE" visible="false">
+                                  <font>
+                                      <Font name="Estrangelo Edessa" size="19.0" />
+                                  </font>
+                              </Label>
+                     </children>
+                  </AnchorPane>
+                  <VBox maxWidth="90.0">
+                     <children>
+                        <Pane maxWidth="90.0">
+                           <children>
+                                    <Button fx:id="startCam" mnemonicParsing="false" onAction="#startCamera" prefHeight="30.0" prefWidth="90.0" text="On">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></Button>
+                                    <Button fx:id="stopBtn" mnemonicParsing="false" onAction="#stopCam" prefWidth="90.0" text="Off" visible="false">
+                                 <font>
+                                    <Font size="14.0" />
+                                 </font></Button>
+                           </children>
+                        </Pane>
+                              <Button fx:id="saveBtn" disable="true" mnemonicParsing="false" onAction="#saveFace" prefHeight="30.0" prefWidth="90.0" text="Save">
+                           <font>
+                              <Font size="14.0" />
+                           </font></Button>
+                              <Button fx:id="recogniseBtn" disable="true" mnemonicParsing="false" onAction="#faceRecognise" prefHeight="30.0" prefWidth="90.0" text="Recognise">
+                                  <font>
+                                      <Font size="14.0" />
+                                  </font>
+                              </Button>
+                              <Button fx:id="stopRecBtn" disable="true" mnemonicParsing="false" onAction="#stopRecognise" prefHeight="60.0" prefWidth="90.0" style="-fx-background-color: red;" text="Stop" textFill="WHITE">
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                           <font>
+                              <Font size="14.0" />
+                           </font></Button>
+                        <Button fx:id="attendBtn" disable="true" mnemonicParsing="false" onAction="#attendStudent" prefHeight="340.0" prefWidth="90.0" style="-fx-background-color: green;" text="Attend" textFill="WHITE">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets />
+                           </VBox.margin>
+                        </Button>
+                     </children>
+                  </VBox>
+              </items>
+            </SplitPane>
+         </content>
+        </TitledPane>
+    </center>
+    <left>
+        <TitledPane fx:id="dataPane" disable="true" text="Fetched Data" BorderPane.alignment="TOP_CENTER">
+            <content>
+                <SplitPane dividerPositions="0.5" orientation="VERTICAL">
+                    <items>
+                          <ListView fx:id="output" editable="true" maxHeight="-Infinity" prefHeight="250.0" style="-fx-padding: 10;">
+                              <effect>
+                                  <Glow />
+                              </effect>
+                          </ListView>
+                        <AnchorPane fx:id="pdPane">
+                     <children>
+                        <VBox alignment="TOP_CENTER" maxHeight="-Infinity" prefHeight="268.0">
+                           <children>
+                                      <Label fx:id="title" text="Student Data">
+                                          <font>
+                                              <Font name="Vermin Vibes 4 Helium" size="30.0" />
+                                          </font>
+                                      </Label>
+                                      <Separator prefHeight="6.0" prefWidth="239.0" />
+                              <HBox>
+                                 <children>
+                                    <VBox>
+                                       <children>
+                                                  <Label text="ID">
+                                                      <font>
+                                                          <Font size="20.0" />
+                                                      </font>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" />
+                                             </VBox.margin>
+                                                  </Label>
+                                                  <Label text="FName">
+                                                      <font>
+                                                          <Font size="20.0" />
+                                                      </font>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" />
+                                             </VBox.margin>
+                                                  </Label>
+                                                  <Label text="LName">
+                                                      <font>
+                                                          <Font size="20.0" />
+                                                      </font>
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" />
+                                             </VBox.margin>
+                                                  </Label>
+                                       </children>
+                                       <HBox.margin>
+                                          <Insets right="10.0" />
+                                       </HBox.margin>
+                                    </VBox>
+                                    <VBox>
+                                       <children>
+                                                  <TextField fx:id="code" prefHeight="30.0" promptText="ID">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" />
+                                             </VBox.margin></TextField>
+                                                  <TextField fx:id="fname" prefHeight="30.0" promptText="Enter First Name">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" />
+                                             </VBox.margin></TextField>
+                                                  <TextField fx:id="lname" prefHeight="30.0" promptText="Enter Last name">
+                                             <VBox.margin>
+                                                <Insets bottom="5.0" />
+                                             </VBox.margin></TextField>
+                                       </children>
+                                    </VBox>
+                                 </children>
+                              </HBox>
+                           </children>
+                           <padding>
+                              <Insets left="5.0" />
+                           </padding>
+                        </VBox>
+                                <ImageView fx:id="motionView" fitHeight="268.0" fitWidth="248.0" pickOnBounds="true" preserveRatio="true" visible="false" />
+                     </children>
+                        </AnchorPane>
+                    </items>
+                </SplitPane>
+            </content>
+        </TitledPane>
+    </left>
+    <right>
+        <TitledPane animated="false" maxHeight="550.0" maxWidth="250.0" text="Output" BorderPane.alignment="TOP_LEFT">
+         <rotationAxis>
+            <Point3D />
+         </rotationAxis>
+         <content>
+            <VBox alignment="TOP_CENTER">
+               <children>
+                              <Label text="LOG">
+                                  <font>
+                                      <Font name="Vermin Vibes 4 Helium" size="22.0" />
+                                  </font>
+                              </Label>
+                              <Separator />
+                              <ListView fx:id="logList" editable="true" prefHeight="500.0" style="-fx-padding: 10;">
+                                  <effect>
+                                      <Glow />
+                                  </effect>
+                              </ListView>
+               </children>
+            </VBox>
+         </content>
+        </TitledPane>
+    </right>
+    <bottom>
+        <Pane BorderPane.alignment="CENTER">
+            <children>
+                <TitledPane animated="false" maxWidth="1300.0" text="Face Database">
+                    <content>
+                        <ScrollPane fitToHeight="true" fitToWidth="true">
+                            <content>
+                                <TilePane fx:id="tile" hgap="30.0" prefHeight="181.0" prefWidth="1438.0" vgap="30.0">
+                                    <padding>
+                                        <Insets bottom="50.0" />
+                                    </padding>
+                                </TilePane>
+                            </content>
+                        </ScrollPane>
+                    </content>
+                </TitledPane>
+            </children>
+        </Pane>
+    </bottom>
+</BorderPane>
