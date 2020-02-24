@@ -1,9 +1,6 @@
 # JavaFx Face Attendance System
-<p align="center">
- <img src="./logo.png" alt="Logo" style="width: 220px;"/></div>
-</p>
 
-ExoVisix is a Smart Computer Vision Application with various functionalities. I have tried to put as many Machine Learning tools as possible into one single Application for greater productivity.
+Smart Computer Vision Application with various functionalities. I have tried to put as many Machine Learning tools as possible into one single Application for greater productivity.
 
 ## KEY FEATURES
 * Auto Attendance system Using Real Time Face Recognition
